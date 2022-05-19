@@ -1,0 +1,20 @@
+<div class="login_box">
+    <div class="left">
+        <div class="contact">
+            <form ngNativeValidate #f="ngForm">
+                <h3>SIGN IN</h3>
+                <input name="username" type="text" placeholder="USERNAME" [(ngModel)]="username" required>
+                <input name="password" type="password" placeholder="PASSWORD" [(ngModel)]="password" required>
+               <p *ngIf="(username!=='' && password!=='') || error" class="error">{{error}}</p>
+               <p *ngIf="username=='' || password==''" class="error">Please fill the fields</p>
+                <button class="submit" [disabled]="!f.valid" (click)=checkLogin()>SUBMIT</button>
+            </form>
+        </div>
+    </div>
+    <div class="right">
+        <div class="right-text">
+            <h2>WELCOME BACK!</h2>
+            <h5>Please login to continue</h5>
+        </div>
+    </div>
+</div>

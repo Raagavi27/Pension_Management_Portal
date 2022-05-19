@@ -1,0 +1,35 @@
+<header class="w4-container w4-red w4-center">
+    <H2>Retirement Benefits Tracker</H2>
+    <p>Get the pension amount in few easy clicks!</p>
+</header>        
+<form  *ngIf="!isShown"  #f="ngForm">
+    <div class="form-group">
+        <label for="AadhaarNumber">Aadhaar number</label>
+        <input type="text" [(ngModel)]="aadhaarNumber" placeholder="Enter your Aadhaar number" name="AadhaarNumber" class="form-control" id="name" minlength="12" pattern="[0-9]+" required>
+        <p *ngIf="error" class="error">{{error}}</p>
+        <button class="btn btn-success" [disabled]="!f.valid"  (click)="getAadhaarNumber()">Get Details</button>
+    </div>
+</form>
+<form #f1="ngForm">
+    <div *ngIf="submitted">
+        <table id="details">
+            <tr>
+                <th>AadhaarNumber </th>
+                <th>{{pd.aadhaarNumber}}</th>
+            </tr>
+            <tr>
+                <td>Process Id </td>
+                <td>{{pd.id}}</td>
+            </tr>
+            <tr>
+                <td>Pension Amount </td>
+                <td>{{pd.pensionAmount}}</td>
+            </tr>
+            <tr>
+                <td>Bank Service Charge </td>
+                <td>{{pd.bankServiceCharge}}</td>
+            </tr>
+        </table>
+        <button class="btn btn-success" (click)="back()">Back</button>
+    </div> 
+</form>
